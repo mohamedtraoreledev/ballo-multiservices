@@ -27,10 +27,7 @@
 
 
     try{
-        $bd = new PDO("mysql:kodama.proxy.rlwy.net:55129/railway;port=55129;dbname=railway;charset=utf8","root","PgnEHOHbhDvJybGCBHgCnYfgNGDGKDII", [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
-    ]);
+        $bd = new PDO("mysql:host=kodama.proxy.rlwy.net;port=55129;dbname=railway;charset=utf8","root","PgnEHOHbhDvJybGCBHgCnYfgNGDGKDII");
         $bd->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         // echo "<p style=color:white>connexion reussi</p> ";
     }catch(Exception $e){
