@@ -1,8 +1,9 @@
 <?php
 
     session_start();
-        if(!$_SESSION["authAdmin"]){
-            header("location:../signin.php");
+         if (!isset($_SESSION["authAdmin"])) {
+            header("Location:../signin.php");
+            exit();
         }
 
         include "../includes/conn.php";
