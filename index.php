@@ -1,7 +1,7 @@
 <?php
-
-    header("location:users/index.php");
-    exit;
+    echo "render ok";
+    // header("location:users/index.php");
+    // exit;
 
 
 ?>
