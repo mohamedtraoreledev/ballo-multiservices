@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-        if(!$_SESSION["auth"]){
+        if(!isset($_SESSION["auth"])){
             header("location:../signin.php");
         }
 

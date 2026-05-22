@@ -20,7 +20,7 @@
             // }
 
             if(isset($_POST["valider"])){
-                if(!$_SESSION["auth"]){
+                    if(!isset($_SESSION["auth"])){
                     header("location:../signin.php");
                 }else{
                     if(!empty($_POST["commentaire"])){
