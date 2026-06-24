@@ -33,32 +33,7 @@
 <html lang="en">
 <?php include "../includes/header.php"?>
 <body>
-    <div class="header">
-        <div class="logo">
-            <span class="material-symbols-outlined">add_shopping_cart</span>
-            <h1>BALLO <span>Multi-Services</span></h1>
-        </div>
-        <div class="menu">
-            <a href="index.php">Acceuil</a>
-            <!-- <a href="#Produits">Nos produits</a> -->
-            <!-- <a href="Contacts">Contacts</a> -->
-            <a href="">Promotions</a>
-            <!-- <a href="../admin/logout.php">Déconnexion</a> -->
-        </div>
-        <div class="icons">
-            <!-- <form action="" method="post">
-                <button><span class="material-symbols-outlined">search</span></button>
-                <input type="search" name="search" id="search" placeholder="recherche...">
-            </form> -->
-            <a href="panier.php"><span class="material-symbols-outlined">shopping_cart</span><nav>0</nav></a>
-        </div>
-    </div>
 
-    <div class="band">
-        <p>Retrouvez toutes vos commandes<br>faites ici chez Ballo</p>
-        <div id="trait"></div>
-        <h3>Ballo Multi-Services,qualité guarantie au mali</h3>
-    </div>
 
 
     <div class="commandeespace">
@@ -74,33 +49,39 @@
             <h1>Prenom :<?=$reçu["prenom"]?> </h1>
         </div>
 
-        <table>
-            <tr class="threçu">
-                <th>PRODUIT(S) ACHETÉ(S)</th>
-                <th>DESCRIPTION</th>
-                <th>QUANTITÉ</th>
-                <th>PRIX UNITAIRE (PU)</th>
-            </tr>
-            <?php while($reç = $recupCommande->fetch(PDO::FETCH_ASSOC)){
-                    ?>
-                        <tr>
-                <td><?=$reç["nommodel"]?> - Couleur : <?=$reç["couleur"]?></td>
-                <td><?=$reç["description"]?></td>
-                <td><?=$reç["quantite"]?></td>
-                <td><?=$reç["prixu"]?>FCFA</td>
-            </tr>
-                    <?php
-                }?>
-            
-            <tr class="threçu">
-                <th>PRIX TOTAL : <?=$reçu["prix_total"]?> FCFA</th>
-            </tr>
-            <tr>
-                <a href="reçupdf.php?idCommande=<?= $idCommande ?>">
-                    Télécharger en PDF
-                </a>
-            </tr>
-        </table>
+        <div class="liste-produits-recu">
+
+<?php while($reç = $recupCommande->fetch(PDO::FETCH_ASSOC)){ ?>
+
+    <div class="card-recu">
+
+        <p class="nom-produit">
+            <strong>Couleur :</strong><?=$reç["nommodel"]?>
+        </p>
+
+        <p><strong>Couleur :</strong> <?=$reç["couleur"]?></p>
+
+        <p><strong>Description :</strong> <?=$reç["description"]?></p>
+
+        <p><strong>Quantité :</strong> <?=$reç["quantite"]?></p>
+
+        <p><strong>Prix unitaire :</strong> <?=$reç["prixu"]?> FCFA</p>
+
+    </div>
+
+<?php } ?>
+
+</div>
+
+<div class="total-recu">
+    <h2>PRIX TOTAL : <?=$reçu["prix_total"]?> FCFA</h2>
+</div>
+
+<div class="actions-recu">
+    <a href="reçupdf.php?idCommande=<?=$idCommande?>" class="btn-pdf">
+        Télécharger en PDF
+    </a>
+</div>
 
     </div>
 </body>

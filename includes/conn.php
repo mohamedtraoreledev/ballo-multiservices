@@ -27,8 +27,8 @@
 
 
     try{
-        $bd = new PDO("mysql:host=kodama.proxy.rlwy.net;port=55129;dbname=railway;charset=utf8","root","PgnEHOHbhDvJybGCBHgCnYfgNGDGKDII");
-        // $bd = new PDO("mysql:host=127.0.0.1;port=3308;dbname=ballo;charset=utf8","root","TRA123");
+        // $bd = new PDO("mysql:host=kodama.proxy.rlwy.net;port=55129;dbname=railway;charset=utf8","root","PgnEHOHbhDvJybGCBHgCnYfgNGDGKDII");
+        $bd = new PDO("mysql:host=127.0.0.1;port=3308;dbname=ballo;charset=utf8","root","TRA123");
         $bd->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         // echo "<p style=color:white>connexion reussi</p> ";
     }catch(Exception $e){

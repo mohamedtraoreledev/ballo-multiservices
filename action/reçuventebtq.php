@@ -49,7 +49,7 @@
             <h1>Prenom :<?=$reçu["prenomclient"]?> </h1>
             <h1>Téléphone:<?=$reçu["telephone"]?></h1>
         </div>
-
+    <div class="table-responsive">
         <table>
             <tr class="threçu">
                 <th>PRODUIT(S) ACHETÉ(S)</th>
@@ -77,7 +77,7 @@
                 <?php
 
                     $num = preg_replace('/[^0-9]/', '', $reçu["telephone"]);
-                    $lienRecu = "https://ballo-multiservices-10.onrender.com/action/recupdfventebtq.php?idvente=".$idvente;
+                    $lienReçu = "https://ballo-multiservices-10.onrender.com/action/reçupdfventebtq.php?idvente=".$idvente;
                     $message = "Bonjour ".$reçu["nomclient"]." ".$reçu["prenomclient"]."\n\n";
                     $message .= "Merci pour votre achat chez BALLO MULTI-SERVICES.\n\n";
                     $message .= "REÇU DE VENTE\n".$lienReçu;
@@ -95,6 +95,7 @@ target="_blank">
                 <!-- <button id="impreçu" style="color:red">Imprimer</button> -->
             </tr>
         </table>
+    </div>
 
     </div>
 </body>

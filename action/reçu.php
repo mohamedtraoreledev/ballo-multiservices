@@ -73,32 +73,49 @@
             <h1>Prenom : <?=$recu["prenom"]?> </h1>
         </div>
 
-        <table>
-            <tr class="threçu">
-                <th>PRODUIT(S) ACHETÉ(S)</th>
-                <th>DESCRIPTION</th>
-                <th>QUANTITÉ</th>
-                <th>PRIX UNITAIRE (PU)</th>
-            </tr>
-            <?php while($reçu = $recupCommande->fetch()){
-                    ?>
-                        <tr>
-                <td><?=$reçu["nommodel"]?> - Couleur : <?=$reçu["couleur"]?></td>
-                <td><?=$reçu["description"]?></td>
-                <td><?=$reçu["quantite"]?></td>
-                <td><?=$reçu["prixu"]?>FCFA</td>
-            </tr>
-                    <?php
-            }?>
-            
-            <tr class="threçu">
-                <th>PRIX TOTAL : <?=$recu["prix_total"]?>FCFA</th>
-            </tr>
-            
-            <a href="reçupdf.php?idCommande=<?= $idCommande ?>">
-                    Télécharger en PDF
-                </a>
-        </table>
+        <div class="liste-produits-recu">
+
+        <?php while($reçu = $recupCommande->fetch()){ ?>
+
+            <div class="card-recu">
+
+                <p><strong>Nom du model :</strong><?=$reçu["nommodel"]?></p>
+
+                <p>
+                    <strong>Couleur :</strong>
+                    <?=$reçu["couleur"]?>
+                </p>
+
+                <p>
+                    <strong>Description :</strong>
+                    <?=$reçu["description"]?>
+                </p>
+
+                <p>
+                    <strong>Quantité :</strong>
+                    <?=$reçu["quantite"]?>
+                </p>
+
+                <p>
+                    <strong>Prix unitaire :</strong>
+                    <?=$reçu["prixu"]?> FCFA
+                </p>
+
+            </div>
+
+        <?php } ?>
+
+        </div>
+
+        <div class="total-recu">
+            <h2>
+                Total : <?=$recu["prix_total"]?> FCFA
+            </h2>
+        </div>
+
+        <a href="reçupdf.php?idCommande=<?=$idCommande?>" class="btn-pdf">
+            Télécharger le PDF
+        </a>
 
     </div>
 </body>
