@@ -17,9 +17,9 @@
             $msg_succes = "Retrouvez ici les infos de vos clients ";
         }
 
-                $selectNbCommande = $bd->prepare("SELECT COUNT(*) as nbcommande from commande where vp=?");
-                $selectNbCommande->execute(array(0));
-                $nb_commande = $selectNbCommande->fetch();
+                $selectvpCommande = $bd->prepare("SELECT COUNT(*) as nbcommande from commande where vp=?");
+                $selectvpCommande->execute(array(0));
+                $nb_vp = $selectvpCommande->fetch();
 
 
                 $selectNbVente = $bd->prepare("SELECT COUNT(*) as nbvente from commande where etat3=?");
@@ -50,7 +50,8 @@
 <html lang="en">
 <?php include "../includes/header.php"?>
 <body class="pageadmin">
-       <?php include "../includes/navbar.php"?>
+        <?php include "../includes/navbar.php"?>
+       
 
         <div class="Contentadmin">
 
@@ -64,33 +65,59 @@
                 <h1>MES CLIENTS</h1>
                 <p style="color:white"><?php if(isset($msg_succes)){echo $msg_succes;}?></p>
                 <div id="traitcomment"></div>
-                <?php while($recupC = $recupCommande->fetch()){
-                    ?>
-                        <table>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Email</th>
-                        <th>Téléphone</th>
-                        <th>Date d'inscription</th>
-                    </tr>
-                    <tr>
-                        <td><?=$recupC["nom"]?></td>
-                        <td><?=$recupC["prenom"]?></td>
-                        <td><?=$recupC["email"]?></td>
-                        <td><?=$recupC["telephone"]?></td>
-                        <td><?=$recupC["date_inscript"]?></td>
-                    </tr>
+                <?php while($recupC = $recupCommande->fetch()){ ?>
 
+<div class="clientcard">
 
-                </table>
-                    
-                    <?php
-                }?>
-                
+    <div class="ligneclient">
+        <strong>Nom :</strong>
+        <span><?=$recupC["nom"]?></span>
+    </div>
+
+    <div class="ligneclient">
+        <strong>Prénom :</strong>
+        <span><?=$recupC["prenom"]?></span>
+    </div>
+
+    <div class="ligneclient">
+        <strong>Email :</strong>
+        <span><?=$recupC["email"]?></span>
+    </div>
+
+    <div class="ligneclient">
+        <strong>Téléphone :</strong>
+        <span><?=$recupC["telephone"]?></span>
+    </div>
+
+    <div class="ligneclient">
+        <strong>Date inscription :</strong>
+        <span><?=$recupC["date_inscript"]?></span>
+    </div>
+
+</div>
+
+<?php } ?>
             </div>
 
         </div>
 </body>
+
+<script>
+
+
+setInterval(function(){
+
+    $.get("../messageInstantane/commandenb.php", function(data){
+        $(".nbcommande").text(data);
+    });
+
+    $.get("../messageInstantane/nbvente.php", function(data){
+        $(".nbvente").text(data);
+    });
+
+}, 5000);
+    
+
+</script>
 <script src="../js.js"></script>
 </html>

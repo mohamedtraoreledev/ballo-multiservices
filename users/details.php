@@ -117,8 +117,8 @@
                     <p id="prix">Prix : <?=$recupDetail["prix"]?> FCFA</p>
                     <div id="traitdetails"></div>
                     <p><?=$recupDetail["description"]?></p>
-                    <a href="panier.php?idmodel=<?=$recupDetail["id"]?>&couleur=<?=$recupDetail["couleur"]?>">Ajouter au panier</a>
-                    <a href=""><button>Acheter maintenant<p>Paiement en ligne<br>bientot disponible</p></button></a>
+                    <button><a href="panier.php?idmodel=<?=$recupDetail["id"]?>&couleur=<?=$recupDetail["couleur"]?>">Ajouter au panier</a><button>
+                    <a href="">Acheter maintenant<p>Paiement en ligne<br>bientot disponible</p></a>
                 </div>
             </div>
         <?php
@@ -128,7 +128,7 @@
     <div class="commentspace">
         <form action="" method="post">
             <label for="comment">Commentaire</label>
-            <textarea name="commentaire" id="comment" cols="110" rows="8"placeholder="Qu'en pensez-vous de cet iphone..."></textarea>
+            <textarea name="commentaire" id="comment"placeholder="Qu'en pensez-vous de cet iphone..."></textarea>
             <input type="submit" name="valider" id="valider" value="publier">
         </form>
     </div>

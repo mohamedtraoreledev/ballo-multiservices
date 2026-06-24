@@ -139,7 +139,7 @@
 
     <div class="band">
         <?php if(isset($Gamm)):?>
-        <p>Bienvenue ici vous trouverez tous vos modèles d'<?=$Gamm["nom"]?><br>originaux aux meilleurs prix</p>
+        <p>Bienvenue ici, vous trouverez tous vos modèles d'<?=$Gamm["nom"]?><br>originaux aux meilleurs prix</p>
         <div id="trait"></div>
         <h3>Ballo Multi-Services,qualité guarantie au mali</h3>
         <?php endif;?>
@@ -165,9 +165,27 @@
                 <p><?=$produit["nom"]?></p>
                 <p><?=$produit["prix"]?> FCFA</p>
             </div>
+            <?php
+                $traductionCouleur = [
+                    "rouge" => "red",
+                    "bleu" => "blue",
+                    "vert" => "green",
+                    "jaune" => "yellow",
+                    "noir" => "black",
+                    "blanc" => "white",
+                    "gris" => "gray",
+                    "orange" => "orange",
+                    "violet" => "purple",
+                    "rose" => "pink",
+                    "marron" => "brown"
+                ];
+            
+            ?>
             <div class="couleurs">
-                <?php foreach($produit["couleurs"] as $c):?>
-                <span class="couleur" data-couleur="<?=$c["couleur"]?>" data-img="../imagebdd/<?=$c["image"]?>" style="background:<?=$c["couleur"]?>"></span>
+                <?php foreach($produit["couleurs"] as $c):
+                    $couleurCSS = $traductionCouleur[strtolower($c["couleur"])] ?? "black";
+                ?>
+                <span class="couleur" data-couleur="<?=$c["couleur"]?>" data-img="../imagebdd/<?=$c["image"]?>" style="background:<?=$couleurCSS?>"></span>
                 <?php endforeach;?>
             </div>
             <div class="btndetails">

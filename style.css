@@ -22,27 +22,33 @@ body{
 }
 .header{
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    margin: 10px;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 20px;
+
+    padding: 15px 20px;
 }
 .icons{
     display: flex;
-    flex-direction: row;
     align-items: center;
-    margin-right: 50px;
-    gap: 20px;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
 }
 span:hover{
     transform: scale(1.5);
 }
 .menu{
-    display: flex;
-    flex-direction: row;
+  display: flex;
     align-items: center;
-    gap: 50px;
-    /* font-family: "Montserrat", sans-serif; */
-    font-weight: 300;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
 }
 a:hover{
     transition: 0.5s;
@@ -104,6 +110,8 @@ button{
     background-color: transparent;
     border: 1px solid black;
     padding: 10px;
+    width: 220px;
+    max-width: 100%;
 }
 nav{
     display: inline;
@@ -153,18 +161,36 @@ nav{
 .band{
     border: 1px solid black;
     width: 100%;
-    height: 400px;
+     /* width: 100%; */
+
+    min-height: 400px;
+
+    padding: 40px 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* text-align: center; */
+
+    /* background-image: url("image/banimg.jpg"); */
+    background-size: cover;
+    background-position: center;
     margin-top: 20px;
     background-image: url("image/banimg.jpg");
     color: white;
     text-align: center;
 }
 .band p{
-    position: relative;
-    top: 50px;
-    font-size: 30px;
-    /* font-family: "Montserrat", sans-serif; */
+     font-size: clamp(1.8rem, 5vw, 3rem);
+
     font-weight: 800;
+
+    /* color: #f0cc59; */
+    /* font-size: 30px; */
+    /* font-family: "Montserrat", sans-serif; */
+    /* font-weight: 800; */
     color: #f0cc59;
     
 }
@@ -179,7 +205,7 @@ nav{
 h3{
     /* font-family: "Montserrat", sans-serif; */
     position: relative;
-    top: 60px;
+    bottom:85px;
     font-weight: 200;
 }
 .pofproduct{
@@ -270,8 +296,58 @@ sup{
     font-size: 12px;
 }
 
+.btnachat,
+.infosproduit a{
+    display: inline-flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.btnachat{
+    background: linear-gradient(to right, #ce7a0d, #f1d781, #f7e3ca);
+
+    color: white;
+}
+
+.btnachat p{
+    font-size: 12px;
+    margin-top: 5px;
+}
+
 .btndetails{
     margin-bottom: 10px;
+}
+.btndetailsconn a{
+      /* border: 1px solid; */
+    font-size: 10px;
+    padding: 5px;
+    width: 120px;
+    /* margin-bottom: 30px; */
+    border-radius: 5px;
+    color: rgb(255, 0, 0);
+    border: 1px solid;
+    /* font-family: "Montserrat", sans-serif; */
+    font-weight: 800;
+    /* background-color: orange; */
+    /* background: linear-gradient(to right, #ce7a0d, #f1d781, #f7e3ca); */
+}
+.btndetailsconn a:hover{
+    background-color: #000;
+    transition: 0.5s;
+    transform: scale(1.05);
 }
 .btn span{
     color: white;
@@ -326,9 +402,14 @@ sup{
 }
 .allqual{
     margin: 20px;
+
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    flex-wrap: wrap;
 }
 .q1{
     margin: 5px;
@@ -418,26 +499,36 @@ sup{
 }
 .sign{
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    padding: 10px;
 }
 
     .allpage{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+
+    justify-content: center;
     align-items: center;
 
-    min-height: 100vh;
-    height: auto;
+    flex-wrap: wrap;
 
-    gap: 20px;
-    font-size: 30px;
-    margin: 25px;
-    padding: 20px;
+    gap: 40px;
+
+    margin: 20px;
+
+    padding: 30px;
 
     background-color: white;
-    border-radius: 50px;
+
+    border-radius: 30px;
+
     }
     .imgdetails img:hover{
         transition: 0.5s;
@@ -446,11 +537,24 @@ sup{
     }
     .imgdetails img{
         width: 100%;
-        max-width: 500px;
+    max-width: 400px;
+
+    border-radius: 20px;
+
+    object-fit: cover;
     }
 
     .infosproduit{
-        line-height: 50px;
+        /* line-height: 50px; */
+          flex: 1;
+    min-width: 280px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+
+    line-height: normal;
     }
     .infosproduit h2{
         font-weight: 900;
@@ -468,14 +572,16 @@ sup{
         /* font-family: "Montserrat", sans-serif; */
         font-weight: 300;
     }
-    .infosproduit>*:nth-child(4){
-        font-weight: 800;
-        font-size: 30px;
-    }
-    /* #prix{
+    /* .infosproduit>*:nth-child(4){
         font-weight: 800;
         font-size: 30px;
     } */
+    #prix{
+    font-weight: 800;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+
+    color: orange;
+}
 
     .nbprix{
         color: orange;
@@ -532,14 +638,18 @@ form #valider{
 }
 
 .affcomment{
-    margin: 50px;
-    background-color:gray;
-    padding: 15px;
-    width: 25%;
-    font-size: 10px;
+    width: 90%;
+    max-width: 600px;
+
+    margin: 30px auto;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
     background: linear-gradient(to right, #000, #555, transparent);
+
     color: white;
-    border-radius: 10px;
 }
 .affcomment h1{
     margin-bottom: 10px;
@@ -562,20 +672,18 @@ i{
 }
 
 .panierpage{
-    display: flex;
+   display: flex;
     flex-direction: column;
-    justify-content: center;
+
     align-items: center;
+
+    gap: 20px;
+
+    padding: 30px 20px;
+
     min-height: 100vh;
-    height: auto;
-    position: relative;
-    bottom: 120px;
-    top: 0;
-    height: 500px;
-    /* margin: 10px; */
-    background-color: #f0cc59;
-    background: linear-gradient(to right, #000, #555, transparent); 
-    /* border: 1px solid; */
+
+    background: linear-gradient(to right, #000, #555, transparent);
 }
 .panierpage h1{
     margin: 30px;
@@ -583,19 +691,44 @@ i{
 }
 
 .contentpanier{
+    width: 100%;
+    max-width: 900px;
+
     display: flex;
-    flex-direction:row;
-    gap: 30px;
-    flex-wrap: wrap;
-    text-align: center;
+
     align-items: center;
     justify-content: space-between;
-    margin: 10px;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    background: rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(0.5rem);
+
     color: white;
 }
 
 .contentpanier img{
-    width: 80px;
+    width: 100px;
+    border-radius: 10px;
+}
+.btn{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn a,
+.btn button{
+    border: none;
+    background: transparent;
+    cursor: pointer;
 }
 .contentpanier >*:nth-child(6){
     color: rgb(233, 233, 233);
@@ -611,8 +744,13 @@ i{
 }
 
 .total{
+    font-size: 28px;
+
     font-weight: 800;
+
     color: #ff9102;
+
+    margin-top: 20px;
 }
 
 .infoslivraison{
@@ -623,15 +761,25 @@ i{
     justify-content: center;
 }
 .infoslivraison form input{
-    padding: 20px;
-    width: 100%;
-    margin: 10px;
+     width: 100%;
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+    border: 1px solid #ccc;
+
+    margin-top: 8px;
 }
 
 .infoslivraison form{
+      width: 100%;
+    max-width: 600px;
+
     display: flex;
     flex-direction: column;
-    gap: 50px;
+
+    gap: 25px;
 }
 .btncommande input:hover{
     transition: 0.5s;
@@ -640,8 +788,21 @@ i{
 }
 
 .btncommande input{
-    background: linear-gradient(to right, #ce7a0d, #f1d781, #f7e3ca);
+    width: 100%;
+
+    padding: 15px;
+
     border: none;
+
+    border-radius: 10px;
+
+    background: linear-gradient(to right, #ce7a0d, #f1d781, #f7e3ca);
+
+    color: white;
+
+    font-weight: 700;
+
+    cursor: pointer;
 }
 
 .localite label{
@@ -649,33 +810,57 @@ i{
     left: 12px;
 }
 .continuerachat{
+   padding: 12px 20px;
+
+    border-radius: 10px;
+
     background: linear-gradient(to right, #ce7a0d, #f1d781, #f7e3ca);
-    border: none;
-    margin-top: 20px;
-    padding: 10px;
+
+    color: white;
+
+    font-weight: 600;
+
+    text-align: center;
+
+    transition: 0.3s;
 }
 
 .commandeespace{
-    margin: 80px;
-    background-color: #ffffff;
+     width: 95%;
+
+    max-width: 1200px;
+
+    margin: 40px auto;
+
+    background-color: white;
+
     padding: 20px;
-    margin-top: 50px;
+
+    border-radius: 20px;
+
+    overflow-x: auto;
 }
 .commandeespace td{
     color: black;
 }
 table{
-    padding: 20px;
-    font-size: 20px;
-    border-collapse: collapse;
-    width: 100%;
-    font-size: 12px;
-    /* border: 1px solid; */    
-    /* box-shadow: 1px 2px 3px; */
-    cursor: pointer;
-    margin-top: 50px;
-}
+   width: 100%;
 
+    border-collapse: collapse;
+
+    min-width: 700px;
+
+    margin-top: 30px;
+    font-size: 15px;
+    
+}
+th{
+    color: white;
+    font-size: 10px;
+}
+.threçu th{
+    color: black;
+}
 tr{
     border-bottom: 1px solid;
     font-size: 13px;
@@ -684,14 +869,14 @@ tr >*:nth-child(9){
     color: black;
 }
 
-th{
-    padding: 10px;
-    background-color: rgb(250, 162, 0);
-    color: white;
-}
+th,
 td{
+    padding: 15px;
+
     text-align: center;
-    padding: 10px;
+
+    font-size: 13px;
+    color:white;
 }
 .commandeespace h1{
     margin: 10px;
@@ -712,12 +897,32 @@ td{
 }
 .btncommandes{
     display: flex;
-    gap: 15px;
-    justify-content: center;
-    margin-top: 20px;
-    flex-wrap: wrap;
-}
 
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    margin-top: 25px;
+}
+.btncommandes button{
+    padding: 12px 18px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background-color: black;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
 .btncommandes button:hover{
     transition: 0.5s;
     transform: scale(1.05);
@@ -725,19 +930,33 @@ td{
 }
 
 .detailspanier{
+    width: 100%;
+    max-width: 320px;
+
+    background-color: white;
+
+    border-radius: 20px;
+
+    padding: 20px;
+
+    margin:20px;
+
     display: flex;
-    flex-direction:row;
-    font-size: 15px;
-    gap: 20px;
-    top: 20px;
-    position: relative;
-    text-align: center;
+
+    flex-direction: column;
+
     align-items: center;
-    /* display: none; */
-    background: linear-gradient(to right, #000, #555, transparent); 
-    /* justify-content: space-between; */
-    margin: 10px;
-    color: white;
+
+    gap: 12px;
+
+    text-align: center;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+
+    transition: 0.3s;
+}
+.detailspanier:hover{
+    transform: translateY(-5px);
 }
 .active{
     transition: 2s;
@@ -745,10 +964,16 @@ td{
     display: flex;
 }
 .detailspanier img{
-    width: 80px;
+    width: 100%;
+    max-width: 180px;
+
+    border-radius: 15px;
+
+    object-fit: cover;
 }
 .detailspanier p,h4{
-    color: #ffffff;
+    color: #070708;
+    font-size: 20px;
 }
 .header .logo h1{
     color: black;
@@ -758,6 +983,10 @@ td{
 
 .pageadmin{
     display: flex;
+
+    min-height: 100vh;
+
+    background-color: #f5f5f5;
     flex-direction: row;
     gap: 20px;
     background-image: url("image/Apple_announce-iphone12pro_10132020_big.jpg.large.jpg");
@@ -775,6 +1004,9 @@ td{
 
 .logo h1{
     color: white;
+}
+.mobile-livraison{
+    
 }
 
 .lienmenu{
@@ -811,6 +1043,19 @@ td{
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-attachment: fixed;
+}
+.statuproduit{
+    width: 100%;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    background-color: #f5f5f5;
+}
+
+.statuproduit span{
+    font-weight: 700;
 }
 
 .nommenu{
@@ -1088,6 +1333,9 @@ td{
     z-index: 1004;
     /* height: 200%;  */
     padding: 20px;
+    width: 95%;
+    max-width: 900px;
+    margin: 20px auto;
     
     background-color:rgb(0, 0, 0, 0.5);
     backdrop-filter: blur(0.9rem); 
@@ -1144,9 +1392,61 @@ legend{
 .commandeespaceadmin{
     position: relative;
     top: 110px;
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
     z-index: 1004;
     backdrop-filter: blur(0.8rem);
     padding: 10px;
+}
+.mobile-livraison{
+    background:#fff;
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:15px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+.clientcard{
+    background-color: white;
+
+    border-radius: 20px;
+
+    padding: 20px;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.ligneclient{
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid #ddd;
+
+    flex-wrap: wrap;
+}
+
+.ligneclient strong{
+    color: black;
+}
+
+.ligneclient span{
+    color: #555;
 }
 .commandeespaceadmin th{
     background: transparent;
@@ -1199,15 +1499,99 @@ h4 span{
 }
 
 .form{
-    border: 1px solid;
+    border: 1px solid rgba(255,255,255,0.2);
     display: flex;
     flex-direction: column;
     width: 90%;
     max-width: 450px;
-    padding: 5px;
+
+    padding: 30px 20px;
+
     gap: 20px;
+
     color: white;
+
     backdrop-filter: blur(0.7rem);
+
+    border-radius: 15px;
+}
+
+.nompass,
+.prenompass,
+.emailpass,
+.telpass,
+.mdppass,
+.mdppassconn{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nompass input,
+.prenompass input,
+.emailpass input,
+.telpass input,
+.mdppass input,
+.mdppassconn input,
+.telpass select{
+    width: 100%;
+    padding: 12px;
+
+    border-radius: 8px;
+    border: none;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+.pass{
+   width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.pass input{
+    width: 90%;
+    padding: 12px;
+    display:flex;
+    text-align: center;
+    justify-content:center; 
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: #ce7a0d;
+
+    color: white;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+.load{
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+.pass input:hover{
+    transition: 0.3s;
+    transform: scale(1.02);
+}
+
+.form p{
+    text-align: center;
+    font-size: 14px;
+    position: static;
+
+    margin-top: 15px;
+}
+
+#pagesignin{
+    text-align: center;
 }
 .formconnins input{
     /* width: 30%; */
@@ -1226,42 +1610,7 @@ form p{
 .formconnins a{
     color: #ce7a0d;
 }
-.emailpass{
-    position: relative;
-    right: 23%;
-}
-.mdppass{
-    position: relative;
-    right: 23%;
-}
-.pass{
-    position: relative;
-    right: 17%;
-    bottom: 30px;
 
-}
-.nompass{
-    position: relative;
-    right: 18%;
-}
-.telpass{
-    position: relative;
-    right: 23%;
-}
-.prenompass{
-    position: relative;
-    right: 15%;
-}
-.nompass input{
-    width: 155%;
-    position: relative;
-    margin-top: 10px;
-}
-.telpass{
-    position: relative;
-    right: 6px;
-    width: 90%;
-}
 
 .telpass select{
     width: 100%;
@@ -1270,49 +1619,69 @@ form p{
     border-radius: 5px;
 }
 
-.telpass input{
-    width: 100%;
-    padding: 8px;
-    margin-top: 10px;
-    border-radius: 5px;
-}
-.prenompass input{
-    width: 141%;
-    position: relative;
-    margin-top: 10px;
-}
-.emailpass input{
-    width: 187%;
-    position: relative;
-    margin-top: 10px;
-}
-.mdppass input{
-    width: 186%;
-    margin-top: 10px;
-}
-.mdppassconn{
-    position: relative;
-    right: 22%;
-}
-.mdppassconn input{
-    width: 184%;
-    margin-top: 10px;
-}
-.pass input:hover{
-    transition: 0.5s;
-    transform: scale(1.05);
-}
-.pass input{
-    width: 300%;
-    background-color: #ce7a0d;
-    border: none;
-    color: white;
+.statisclientnb,
+.statiscommandenb,
+.statisCA{
+    flex: 1;
+
+    min-width: 220px;
+
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+
+    overflow: hidden;
+    color: black;
 }
 
-.mdppass span{
-    position: relative;
-    left: 60%;
+.statisCA h5,
+.statisclientnb h5,
+.statiscommandenb h5{
+    font-size: clamp(1.2rem, 4vw, 2rem);
+
+    word-break: break-word;
+
+    line-height: 1.3;
+    color: black;
 }
+
+.statisCA span,
+.statisclientnb span,
+.statiscommandenb span{
+    font-size: 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 10px;
+
+    flex-wrap: wrap;
+    color: black;
+}
+.livraison-card{
+    margin: 10px 0;
+    background-color: #f5f1f1;
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+
+
+   .vente-card{
+    background:#fff;
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:15px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
 #msg{
     font-size: 13px;
     width: 100%;
@@ -1325,9 +1694,25 @@ form p{
     top: 20px;
     right: 20px;
 }
+#submitconnvente{
+    position: relative;
+    bottom: 10px;
+    right: 3px;
+}
 #conneye{
     position: relative;
     left: 60%;
+}
+#comment{
+     width: 100%;
+
+    min-height: 180px;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    resize: vertical;
 }
 #closebtn{
     position: fixed;
@@ -1338,88 +1723,841 @@ form select{
     width: 100%;
     padding:5px
 }
+
+.commande-card-admin{
+    background:#fff;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+.commande-card-admin p{
+    margin:10px 0;
+}
 .select{
     /* border: 2px solid; */
     width: 50%;
 }
 
+.commande-card{
+    background-color: white;
 
+    border-radius: 15px;
+
+    padding: 20px;
+
+    margin-top: 25px;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.ligne{
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 10px 0;
+
+    border-bottom: 1px solid #ddd;
+
+    flex-wrap: wrap;
+}
+
+.ligne strong{
+    color: #000;
+}
+
+.ligne span{
+    color: #555;
+}
+
+.btncommandes{
+    margin-top: 20px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    justify-content: center;
+}
+
+.btncommandes button{
+    padding: 10px 15px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: black;
+
+    color: white;
+
+    cursor: pointer;
+}
 
 
 
 @media screen and (max-width:768px){
 
+    .logo h1{
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .form{
+        padding: 25px 15px;
+    }
+
+    #pagesignin{
+        font-size: 24px;
+    }
+
+    .form p{
+        font-size: 13px;
+    }
+
+    /* index */
+
+
+    
     .header{
         flex-direction: column;
         align-items: center;
-        gap: 20px;
     }
 
     .menu{
-        flex-direction: column;
+        justify-content: center;
         gap: 15px;
     }
 
-    .icons{
-        margin-right: 0;
-        justify-content: center;
-        flex-wrap: wrap;
+    .menu a{
+        font-size: 14px;
     }
 
-    .allpage{
-        flex-direction: column;
-        padding: 20px;
-        border-radius: 20px;
+    .icons{
+        justify-content: center;
+    }
+
+    .logo h1{
+        font-size: 20px;
+    }
+
+    .band{
+        min-height: 300px;
+    }
+
+    .band p{
+        font-size: 28px;
     }
 
     .allqual{
         flex-direction: column;
         align-items: center;
+        text-align: center;
     }
 
-    .contentpanier{
+    #search{
+        width: 100%;
+    }
+
+    /* details */
+    
+    .allpage{
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .infosproduit h2{
+        font-size: 24px;
+    }
+
+    .infosproduit p{
+        font-size: 14px;
+    }
+
+    .imgdetails img{
+        max-width: 100%;
+    }
+
+    .commentspace form{
+        margin: 15px;
+    }
+
+    .affcomment{
+        width: 95%;
+    }
+
+    /* panier */
+
+
+     .contentpanier{
         flex-direction: column;
+
+        text-align: center;
+    }
+
+    .contentpanier img{
+        width: 140px;
+    }
+
+    .total{
+        font-size: 22px;
+    }
+
+    .infoslivraison{
+        margin: 20px;
+    }
+
+    .localite{
+        width: 100%;
+    }
+
+    .localite label{
+        left: 0;
+    }
+    /* commandeclient */
+
+     .commandeespace{
+        width: 100%;
+
+        padding: 15px;
+
+        border-radius: 0;
+    }
+
+    table{
+        min-width: 650px;
+    }
+
+    th,
+    td{
+        font-size: 12px;
+
+        padding: 10px;
+    }
+
+    .btncommandes{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btncommandes button{
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .band p{
+        font-size: 24px;
+    }
+    /* detailscommande */
+
+    .commandeespace{
+        width: 100%;
+
+        padding: 15px;
     }
 
     .detailspanier{
-        flex-direction: column;
-        padding: 20px;
+        max-width: 100%;
     }
 
-    .pageadmin{
+    .band p{
+        font-size: 24px;
+    }
+
+    /* admin acceuil */
+
+     .pageadmin{
         flex-direction: column;
+    }
+
+    .navbar{
+        width: 100%;
+
+        min-height: auto;
+
+        position: relative;
     }
 
     .lienmenu{
         flex-direction: row;
+
         flex-wrap: wrap;
+
         justify-content: center;
-        top: 0;
     }
 
-    .statisadmin,
+    .lienmenu a{
+        font-size: 14px;
+    }
+
+    .Contentadmin{
+        padding: 15px;
+    }
+
+    .statisadmin{
+        flex-direction: column;
+    }
+
     .statisadmintwo{
         flex-direction: column;
-        align-items: center;
     }
 
     .statisclientnb,
     .statiscommandenb,
     .statisCA{
-        width: 90%;
-        text-align: center;
-        padding: 40px;
-        font-size: 30px;
+        width: 100%;
     }
 
-    table{
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
+    /* ajoutcouleuradmin */
+
+
+    @media screen and (max-width:768px){
+
+    .formajoutproduitmodif{
+        width: 100%;
+        padding: 10px;
     }
 
-    .commandeespaceadmin a button{
-        left: 0;
+    .ajoutproduit{
+        padding: 15px;
+    }
+
+    .nommenu h1{
+        font-size: 22px;
+    }
+
+    .ajoutproduit h2{
+        font-size: 16px;
     }
 
 }
+
+
+    /* =========================
+   RESPONSIVE COMMANDES ADMIN
+========================= */
+
+@media screen and (max-width: 768px) {
+
+    /* PAGE GLOBAL */
+    .pageadmin {
+        flex-direction: column;
+    }
+
+    /* NAVBAR */
+    .navbar {
+        width: 100%;
+        position: relative;
+        padding: 10px;
+    }
+
+    .lienmenu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        top: 0;
+    }
+
+    .lienmenu a {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    /* CONTENT */
+    .Contentadmin {
+        padding: 10px;
+    }
+
+    .nommenu h1 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .commandeespaceadmin {
+        top: 0;
+        padding: 10px;
+    }
+
+    /* TITRE */
+    .commandeespaceadmin h1 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    /* CARD COMMANDES */
+    .commande-card-admin {
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .commande-card-admin p {
+        font-size: 13px;
+    }
+
+    /* LOAD CONTAINER */
+    .load {
+        overflow-x: hidden;
+    }
+
+    .mobile-commandes {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* BOUTONS */
+    .commandeespaceadmin a button {
+        position: static;
+        width: 100%;
+        margin: 5px 0;
+        font-size: 13px;
+    }
+
+    /* TRAIT */
+    #traitcomment {
+        width: 60%;
+        margin: auto;
+    }
+}
+
+    /* details commande admin */
+
+    @media (max-width: 768px){
+
+    .Contentadmin{
+        padding: 10px;
+    }
+
+    .detailspanier{
+        width: 100%;
+    }
+
+    .detailspanier img{
+        max-width: 200px;
+    }
+}
+
+    @media (max-width: 768px){
+
+    .formajoutproduitmodif{
+        padding: 10px;
+        align-items: center;
+    }
+
+    .ajoutproduit{
+        max-width: 100%;
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .ajoutproduit h2{
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .ajoutproduit legend{
+        font-size: 18px;
+    }
+
+    .ajoutproduit input,
+    .ajoutproduit textarea{
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    #submit{
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+
+    @media (max-width: 768px){
+
+    .formajoutproduitmodif{
+        padding: 10px;
+        align-items: center;
+    }
+
+    .ajoutproduit{
+        max-width: 100%;
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .ajoutproduit h2{
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .ajoutproduit legend{
+        font-size: 18px;
+    }
+
+    .ajoutproduit input,
+    .ajoutproduit textarea{
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    #submit{
+        width: 100%;
+        padding: 12px;
+    }
+}   
+
+/* details vente */
+
+    @media screen and (max-width:768px){
+
+    .Contentadmin{
+        width:100%;
+        padding:10px;
+        margin-left:0;
+    }
+
+    .detailspanier{
+        width:95%;
+        margin:15px auto;
+        padding:15px;
+        border-radius:15px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+    }
+
+    .detailspanier img{
+        width:180px;
+        height:auto;
+        max-width:100%;
+        border-radius:10px;
+    }
+
+    .detailspanier h4{
+        font-size:18px;
+        margin:10px 0;
+    }
+
+    .detailspanier p{
+        font-size:14px;
+        margin:5px 0;
+        word-break:break-word;
+    }
+
+}
+
+    @media screen and (min-width:769px){
+
+    .Contentadmin{
+        display:flex;
+        flex-wrap:wrap;
+        gap:20px;
+    }
+
+    .detailspanier{
+        width:280px;
+    }
+
+    .detailspanier img{
+        width:100%;
+        height:250px;
+        object-fit:cover;
+    }
+
+}
+
+    /* venteboutique */
+
+
+    @media screen and (max-width:768px){
+
+    .venteespace{
+        width:95%;
+        margin:auto;
+        display:flex;
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .venteespace .form{
+        width:100%;
+        padding:15px;
+    }
+
+    .ligne{
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .ligne select,
+    .ligne input{
+        width:100%;
+        box-sizing:border-box;
+    }
+
+    .telpass select{
+        width:100%;
+        margin-bottom:10px;
+    }
+
+    #submitconnvente{
+        width:100%;
+    }
+
+    .affichervente{
+        width:100%;
+        overflow-x:auto;
+    }
+
+    .affichervente table{
+        width:100%;
+        font-size:12px;
+    }
+
+    .affichervente th,
+    .affichervente td{
+        padding:8px;
+    }
+
+    .affichervente a{
+        display:block;
+        text-align:center;
+        margin:5px 0;
+    }
+
+}
+
+    /* vente */
+
+        /* Mobile uniquement */
+/* .mobile-ventes{
+    display:none;
+} */
+
+@media screen and (max-width:768px){
+
+    .commandeespaceadmin table{
+        display:none;
+    }
+
+    /* .mobile-ventes{
+        display:flex;
+        flex-direction:column;
+        gap:15px;
+        width:100%;
+    } */
+
+    .vente-card{
+        background:#fff;
+        color:#000;
+        border-radius:15px;
+        padding:15px;
+        box-shadow:0 2px 10px rgba(0,0,0,.15);
+    }
+
+    .vente-card p{
+        margin:8px 0;
+        font-size:14px;
+        word-break:break-word;
+    }
+
+    .vente-card strong{
+        font-weight:700;
+    }
+
+    .vente-actions{
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+        margin-top:15px;
+    }
+
+    .vente-actions a{
+        text-decoration:none;
+    }
+
+    .vente-actions button{
+        width:100%;
+        padding:12px;
+        border:none;
+        border-radius:8px;
+        background:#0d6efd;
+        color:white;
+        cursor:pointer;
+    }
+}
+
+    /* produitAdmin */
+
+    /* ==========================
+   RESPONSIVE PRODUIT ADMIN
+========================== */
+
+@media screen and (max-width:768px){
+
+    .Contentadmin{
+        width:100%;
+        margin-left:0;
+        padding:10px;
+    }
+
+    .nommenu h1{
+        font-size:22px;
+        text-align:center;
+    }
+
+    /* Formulaire */
+
+    .formajoutproduit{
+        width:95%;
+        margin:auto;
+        padding:15px;
+        overflow-y:auto;
+        max-height:90vh;
+    }
+
+    .ajoutproduit{
+        width:100%;
+    }
+
+    .ajoutproduit input,
+    .ajoutproduit textarea,
+    .ajoutproduit select{
+        width:100%;
+        box-sizing:border-box;
+    }
+
+    .ajoutproduit textarea{
+        height:120px;
+    }
+
+    .ajoutproduit button,
+    .ajoutproduit #submit{
+        width:100%;
+        margin-top:10px;
+    }
+
+    /* Variantes couleurs */
+
+    .variante{
+        width:100%;
+    }
+
+    .variante input{
+        width:100%;
+    }
+
+    /* Bouton ajouter produit */
+
+    .espaceajoutproduit{
+        width:95%;
+        margin:15px auto;
+        text-align:center;
+    }
+
+    /* Produits */
+
+    .produit-items{
+        display:flex;
+        flex-direction:column;
+        gap:20px;
+        align-items:center;
+    }
+
+    .produit{
+        width:100%;
+    }
+
+    .allproduitadmin{
+        width:100%;
+        max-width:350px;
+        margin:auto;
+    }
+
+    .allproduitadmin img{
+        width:100%;
+        height:auto;
+        object-fit:cover;
+    }
+
+    .voirproduitadmin{
+        display:block;
+        width:100%;
+        text-align:center;
+    }
+}
+
+/* ==========================
+   LIVRAISON RESPONSIVE
+========================== */
+
+
+
+@media screen and (max-width:768px){
+
+    .commandeespaceadmin table{
+        display:none;
+    }
+
+    .mobile-livraison{
+        display:flex;
+        flex-direction:column;
+        gap:15px;
+        margin-top:20px;
+    }
+
+    .livraison-card{
+        background:#fff;
+        border-radius:15px;
+        padding:15px;
+        box-shadow:0 2px 10px rgba(0,0,0,.15);
+    }
+
+    .livraison-card p{
+        margin:8px 0;
+        word-break:break-word;
+    }
+
+    .livraison-card iframe{
+        width:100%;
+        height:250px;
+        border-radius:10px;
+        margin-top:10px;
+    }
+
+    .livraison-card a{
+        display:block;
+        text-align:center;
+        padding:12px;
+        background:#ff6b00;
+        color:white;
+        text-decoration:none;
+        border-radius:8px;
+        margin-top:10px;
+    }
+}
+ 
+
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+

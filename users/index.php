@@ -62,6 +62,10 @@
                 ?>
             </nav>
         </a>
+        
+        </div>
+        <div class="btndetailsconn">
+            <a href="../signin.php">Connexion</a>
         </div>
     </div>
 

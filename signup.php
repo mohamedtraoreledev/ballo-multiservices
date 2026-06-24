@@ -10,6 +10,7 @@
             $email= strip_tags($_POST["email"]);
             $indicatif = $_POST["indicatif"];
             $telephone = ($indicatif." ".$_POST["tel"]);
+            echo $telephone;
             
             $mdp = strip_tags(sha1(($_POST["mdp"])));
 
@@ -31,7 +32,14 @@
                     $_SESSION["prenom"] = $infosUsers["prenom"];
                     $_SESSION["email"] = $infosUsers["email"];
                     $_SESSION["telephone"] = $infosUsers["telephone"];
-                    $msg_succes = "inscription reussi !!";
+                     if(isset($_SESSION["redirect_after_connect"])){
+                        $redirectUrl = $_SESSION["redirect_after_connect"];
+                        unset($_SESSION["redirect_after_connect"]);
+                        header("location:".$redirectUrl);
+                    }else{
+                        header("location:users/index.php");
+                    }
+                    // $msg_succes = "inscription reussi !!";
                 }
             }
 
@@ -127,7 +135,7 @@
 
         </select>
             <label for="mdp">Numéro de téléphone</label><br>
-            <input type="tel" name="tel" id="tel"placeholder="+223 76767676"pattern="^\+?[0-9\s]{8,15}$"maxlength="15"required>
+            <input type="tel" name="tel" id="tel"placeholder="76767676"pattern="^\+?[0-9\s]{8,15}$"maxlength="15"required>
         </div>
        <div class="mdppass">
             <label for="mdp">Mot de passe</label><br>

@@ -46,6 +46,7 @@
                     $msg_error = "Veuillez remplir tous les champs d'informations";
                 }
                 header("location:pagemodel.php?idmodel=".$getIdModel."&idgamme=".$gamme_id);
+                exit();
 
                 
         }else{
@@ -74,7 +75,7 @@
     <section  class="pageadmin">
     
     
-        <?php include "../includes/navbar.php"?>
+        <!-- <?php include "../includes/navbar.php"?> -->
 
         <div class="Contentadmin">
 

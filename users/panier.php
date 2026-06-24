@@ -1,9 +1,13 @@
 <?php
 
     session_start();
-        // if(!$_SESSION["auth"]){
-        //     header("location:../signin.php");
-        // }
+        if(!isset($_SESSION["auth"])){
+
+        $_SESSION["redirect_after_connect"] = $_SERVER["REQUEST_URI"];
+
+            header("location:../signin.php");
+            exit;
+        }
 
         include "../includes/conn.php";
 
@@ -14,6 +18,7 @@
         if(isset($_GET["idmodel"]) && isset($_GET["couleur"])){
             $getIdModelForPanier = $_GET["idmodel"];
             $getCouleurForPanier = $_GET["couleur"];
+
             if(!isset($_SESSION["panier"][$getIdModelForPanier])){
                 $_SESSION["panier"][$getIdModelForPanier]=[];
             }
@@ -166,7 +171,7 @@
             }
             
         ?>
-        <div class="total">TOTAL :<?=$total?>FCFA</div>
+        <div class="total">TOTAL : <?=$total?> FCFA</div>
         <a href="index.php"><div class="continuerachat">Continuer vos achats</div></a>
         <a href="commandeclient.php"><div class="continuerachat">Mes commandes</div></a>
     </div>
@@ -179,10 +184,10 @@
                 <input type="text" name="villeliv" placeholder="Bamako..." required="required">
                 <label for="ville">Adresse de Livraison</label>
                 <input type="text" name="adresseliv" placeholder="Adeken près du cap..." required="required">
-                <label for="ville">Latitude</label>
-                <input type="text" name="latitude" placeholder="47758559.384..." required="required" value="">
-                <label for="ville">longitude</label>
-                <input type="text" name="longitude" placeholder="85969496.54..." required="required" value="">
+                <!-- <label for="ville">Latitude</label> -->
+                <input type="hidden" name="latitude" placeholder="47758559.384..." required="required" value="">
+                <!-- <label for="ville">longitude</label> -->
+                <input type="hidden" name="longitude" placeholder="85969496.54..." required="required" value="">
             </div>
             <div class="btncommande">
                 <input type="submit" value="PASSER LA COMMANDE" name="valideC">

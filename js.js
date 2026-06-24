@@ -170,8 +170,8 @@ voirpass.addEventListener("click",()=>{
 })
 form.addEventListener("submit",(e)=>{
     var passvalue = password.value;
-    if(passvalue.length<8){
-        msg.innerHTML = "Votre mot de passe doit contenir au moins 8 caractères";
+    if(passvalue.length<4){
+        msg.innerHTML = "Votre mot de passe doit contenir au moins 4 caractères";
         msg.style.color = "red";
         e.preventDefault();
     }else if(res1.test(passvalue)==false|| res2.test(passvalue)==false){

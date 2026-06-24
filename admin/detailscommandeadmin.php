@@ -17,9 +17,9 @@
             }
         }
 
-         $selectNbCommande = $bd->prepare("SELECT COUNT(*) as nbcommande from commande where vp=?");
-                $selectNbCommande->execute(array(0));
-                $nb_commande = $selectNbCommande->fetch();
+         $selectvpCommande = $bd->prepare("SELECT COUNT(*) as nbcommande from commande where vp=?");
+        $selectvpCommande->execute(array(0));
+        $nb_vp = $selectvpCommande->fetch();
 
 
                 $selectNbVente = $bd->prepare("SELECT COUNT(*) as nbvente from commande where etat3=?");
@@ -90,5 +90,23 @@
 
         </div>
 </body>
+
+<script>
+
+
+setInterval(function(){
+
+    $.get("../messageInstantane/commandenb.php", function(data){
+        $(".nbcommande").text(data);
+    });
+
+    $.get("../messageInstantane/nbvente.php", function(data){
+        $(".nbvente").text(data);
+    });
+
+}, 5000);
+    
+
+</script>
 <script src="../js.js"></script>
 </html>

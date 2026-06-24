@@ -12,7 +12,7 @@
             $recupDetailCommande = $bd->prepare("SELECT nom,stockage,couleur,image,quantite,cd.prix,statu_produit,col.id as id_couleur,cd.id_commande as id_commande FROM commande_details as cd join model as m on cd.id_produit=m.id join couleur_models as col on cd.id_couleur=col.id where cd.id_commande=?");
             $recupDetailCommande->execute(array($idCommande));
             if($recupDetailCommande->rowCount()==0){
-                $msg_succes = "Pas de détals dans la commande";
+                $msg_succes = "Pas de détails dans la commande";
             }
         }
 
@@ -76,9 +76,7 @@
                     <div class="statuproduit">
                         <h4>Statu du produit : <br> <span><?=$dC["statu_produit"]?></span></h4>
                     </div>
-                    <?php if($dC["statu_produit"]!="<p style='color:red'>Désoler<br>la quantité manque<p/>" && $dC["statu_produit"]!="<p style='color:red'>Produit Refusée<p/>" && $dC["statu_produit"]!="<p style='color:red'>Produit annulé<p/>" && $dC["statu_produit"]!="<p style='color:green'>Valider<p/>" ):?>
-                    <a href="../action/annulerclientproduit.php?idCouleur=<?=$dC["id_couleur"]?>&idCommande=<?=$dC["id_commande"]?>&quantite=<?=$dC["quantite"]?>&prix=<?=$dC["prix"]?>">Annuler cet produit</a>
-                    <?php endif;?>
+                    
                 </div>
             
             <?php

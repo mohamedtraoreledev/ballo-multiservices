@@ -17,9 +17,9 @@
             $msg_succes = "Les commandes de vos clients s'afficheront ici";
         }
 
-                $selectNbCommande = $bd->prepare("SELECT COUNT(*) as nbcommande from commande where vp=?");
-                $selectNbCommande->execute(array(0));
-                $nb_commande = $selectNbCommande->fetch();
+                $selectvpCommande = $bd->prepare("SELECT COUNT(*) as nbcommande from commande where vp=?");
+        $selectvpCommande->execute(array(0));
+        $nb_vp = $selectvpCommande->fetch();
 
 
                 $selectNbVente = $bd->prepare("SELECT COUNT(*) as nbvente from commande where etat3=?");
@@ -66,38 +66,29 @@
                 <div id="traitcomment"></div>
                 <?php while($recupC = $recupCommande->fetch()){
                     ?>
-                        <table>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Email</th>
-                        <th>Téléphone</th>
-                        <th>Date de la commmande</th>
-                        <th>Prix total de la commande</th>
-                        <th id="statucommandeadmin">Statu de la commande</th>
-                    </tr>
-                    <tr>
-                        <td><?=$recupC["nom"]?></td>
-                        <td><?=$recupC["prenom"]?></td>
-                        <td><?=$recupC["email"]?></td>
-                        <td><?=$recupC["telephone"]?></td>
-                        <td><?=$recupC["date_commande"]?></td>
-                        <td><?=$recupC["prix_total"]?> FCFA</td>
-                        <td id="enattente"><?=$recupC["statu_commande"]?></td>
-                    </tr>
-                    <?php if($recupC["statu_commande"]=="<p style='color:green'>Livrer<p/>"):?>
+                       <div class="vente-card">
 
-                        
-                            <td><a href="detailscommandeadmin.php?idCommande=<?=$recupC["idCommande"]?>"><button id="voircommande">Voir produit(s) de la commande</button></a></td>
-                            
-                        
+                            <p><strong>Nom :</strong> <?=$recupC["nom"]?></p>
 
-                       
+                            <p><strong>Prénom :</strong> <?=$recupC["prenom"]?></p>
 
-                    <?php endif;?>
+                            <p><strong>Email :</strong> <?=$recupC["email"]?></p>
 
+                            <p><strong>Téléphone :</strong> <?=$recupC["telephone"]?></p>
 
-                </table>
+                            <p><strong>Date :</strong> <?=$recupC["date_commande"]?></p>
+
+                            <p><strong>Total :</strong> <?=$recupC["prix_total"]?> FCFA</p>
+
+                            <p><strong>Statut :</strong> <?=$recupC["statu_commande"]?></p>
+
+                            <div class="vente-actions">
+                                <a href="detailscommandeadmin.php?idCommande=<?=$recupC["idCommande"]?>">
+                                    <button>Voir produit(s)</button>
+                                </a>
+                            </div>
+
+                        </div>
                     
                     <?php
                 }?>
@@ -106,5 +97,23 @@
 
         </div>
 </body>
+
+<script>
+
+
+setInterval(function(){
+
+    $.get("../messageInstantane/commandenb.php", function(data){
+        $(".nbcommande").text(data);
+    });
+
+    $.get("../messageInstantane/nbvente.php", function(data){
+        $(".nbvente").text(data);
+    });
+
+}, 5000);
+    
+
+</script>
 <script src="../js.js"></script>
 </html>

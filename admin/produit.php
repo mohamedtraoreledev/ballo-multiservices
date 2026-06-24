@@ -25,7 +25,7 @@
                         $insertProduit = $bd->prepare("INSERT INTO model(nom,prix,description,id_gamme,stockage) values(?,?,?,?,?)");
                         $insertProduit->execute(array($nom_model,$prix,$description,$gamme_id,$stockage));
                         $id_model = $bd->lastInsertId();
-                        echo "model inserer";
+                        // echo "model inserer";
             // COMME Y'A PLUSIEURS COULEURS IMAGE ET STOCK SUIVANT LA COULEUR POUR UN MODEL ON BOUCLE SUR LA COULEUR ET ON INSERE POUR CHAQUE CAS
                     for($i=0;$i<count($_POST["couleur"]);$i++){ //POUR CHAQUE COULEUR DONNÉE
                         $couleur = $_POST["couleur"][$i];
@@ -40,7 +40,7 @@
                         // $stock = $_POST["stock"];
                         $insertCouleurModel = $bd->prepare("INSERT INTO couleur_models(id_model,couleur,image,stock) values(?,?,?,?)");
                         $insertCouleurModel->execute(array($id_model,$couleur,$newname_image,$stock));
-                        echo "Couleur insérer";
+                        // echo "Couleur insérer";
                     }else{
                         $msg_error = "image non insérer";
                     }
@@ -58,9 +58,9 @@
       }
         
         
-                $selectNbCommande = $bd->prepare("SELECT COUNT(*) as nbcommande from commande where vp=?");
-                $selectNbCommande->execute(array(0));
-                $nb_commande = $selectNbCommande->fetch();
+                $selectvpCommande = $bd->prepare("SELECT COUNT(*) as nbcommande from commande where vp=?");
+        $selectvpCommande->execute(array(0));
+        $nb_vp = $selectvpCommande->fetch();
 
 
                 $selectNbVente = $bd->prepare("SELECT COUNT(*) as nbvente from commande where etat3=?");
@@ -86,7 +86,7 @@
     
     <section  class="pageadmin">
     
-    <?php include "../includes/navbar.php"?>
+        <?php include "../includes/navbar.php"?>
 
         <div class="Contentadmin">
 
@@ -203,5 +203,22 @@
     </section>
         
 </body>
+
+<script>
+
+setInterval(function(){
+
+    $.get("../messageInstantane/commandenb.php", function(data){
+        $(".nbcommande").text(data);
+    });
+
+    $.get("../messageInstantane/nbvente.php", function(data){
+        $(".nbvente").text(data);
+    });
+
+}, 5000);
+    
+
+</script>
 <script src="../js.js"></script>
 </html>

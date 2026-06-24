@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-        if(!$_SESSION["auth"]){
+        if(!$_SESSION["authAdmin"]){
             header("location:../signin.php");
         }
 
@@ -74,7 +74,7 @@
         </div>
 
         <table>
-            <tr>
+            <tr class="threçu">
                 <th>PRODUIT(S) ACHETÉ(S)</th>
                 <th>DESCRIPTION</th>
                 <th>QUANTITÉ</th>
@@ -91,8 +91,8 @@
                     <?php
             }?>
             
-            <tr>
-                <th>PRIX TOTAL : <?=$_SESSION["total"]?>FCFA</th>
+            <tr class="threçu">
+                <th>PRIX TOTAL : <?=$recu["prix_total"]?>FCFA</th>
             </tr>
             
             <a href="reçupdf.php?idCommande=<?= $idCommande ?>">

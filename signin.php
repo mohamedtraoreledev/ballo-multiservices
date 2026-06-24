@@ -7,7 +7,7 @@
 
             $email= strip_tags($_POST["email"]);
             $mdp = (sha1(($_POST["mdp"])));
-            $defaultName = "adminballo12@gmail.com";
+            $defaultName = "adminballo12@gmailcom";
             $defaultPass = sha1("ADMIN12@");
             
             $recupUsers = $bd->prepare("SELECT email,mdp from client where email=? and mdp=?");
@@ -26,7 +26,14 @@
                     $_SESSION["prenom"] = $infosUsers["prenom"];
                     $_SESSION["email"] = $infosUsers["email"];
                     $_SESSION["telephone"] = $infosUsers["telephone"];
-                    header("location:users/index.php");
+                    if(isset($_SESSION["redirect_after_connect"])){
+                        $redirectUrl = $_SESSION["redirect_after_connect"];
+                        unset($_SESSION["redirect_after_connect"]);
+                        header("location:".$redirectUrl);
+                    }else{
+                        header("location:users/index.php");
+                    }
+                    
                 }else{
                     $msg_error = "Identifiant Incorrect";
                 }
@@ -67,18 +74,18 @@
         <h1 id="pagesignin">Connexion</h1>
         <div class="emailpass">
             <label for="email">E-mail</label><br>
-            <input type="email" name="email" id="email" placeholder="example@11gmail.com">
+            <input type="email" name="email" id="email" placeholder="example@11gmail.com" autocomplete="off">
         </div>
         
         <div class="mdppassconn">
             <label for="mdp">Mot de passe</label><br>
-            <input type="password" name="mdp" id="mdp" placeholder="**********">
+            <input type="password" name="mdp" id="mdp" placeholder="**********" autocomplete="off">
         </div>
         <span class="material-symbols-outlined" id="btnvoir"></span>
 
         <div class="msg">
             <p style="color:red"><?php if(isset($msg_error)){echo $msg_error;}?></p>
-            <p style="color:green"><?php if(isset($msg_succes)){echo $msg_succes;}?></p>
+            
             <p id="msg"></p>
         </div>
         

@@ -59,9 +59,9 @@
                 
             }
 
-                $selectNbCommande = $bd->prepare("SELECT COUNT(*) as nbcommande from commande where vp=?");
-                $selectNbCommande->execute(array(0));
-                $nb_commande = $selectNbCommande->fetch();
+                $selectvpCommande = $bd->prepare("SELECT COUNT(*) as nbcommande from commande where vp=?");
+        $selectvpCommande->execute(array(0));
+        $nb_vp = $selectvpCommande->fetch();
 
 
                 $selectNbVente = $bd->prepare("SELECT COUNT(*) as nbvente from commande where etat3=?");
@@ -86,7 +86,7 @@
 <body>
     <section  class="pageadmin">
     
-    <?php include "../includes/navbar.php"?>
+        <?php include "../includes/navbar.php"?>
 
         <div class="Contentadmin">
 
@@ -115,9 +115,27 @@
                             <p>Quantité <strong><?=$produit["couleurs"][0]["stock"]?></strong></p>
                         </div>
 
+                                    <?php
+                                        $traductionCouleur = [
+                                            "rouge" => "red",
+                                            "bleu" => "blue",
+                                            "vert" => "green",
+                                            "jaune" => "yellow",
+                                            "noir" => "black",
+                                            "blanc" => "white",
+                                            "gris" => "gray",
+                                            "orange" => "orange",
+                                            "violet" => "purple",
+                                            "rose" => "pink",
+                                            "marron" => "brown"
+                                        ];
+                                    ?>
+
                         <div class="couleurs">
-                            <?php foreach($produit["couleurs"] as $c):?>
-                                <span class="couleur" data-stock="<?=$c["stock"]?>" data-couleur="<?=$c["couleur"]?>" data-img="../imagebdd/<?=$c["image"]?>" style="background:<?=$c["couleur"]?>; border:1px solid #000;"></span>
+                            <?php foreach($produit["couleurs"] as $c):
+                                $couleurCSS = $traductionCouleur[strtolower($c["couleur"])] ?? "black";
+                            ?>
+                                <span class="couleur" data-stock="<?=$c["stock"]?>" data-couleur="<?=$c["couleur"]?>" data-img="../imagebdd/<?=$c["image"]?>" style="background:<?=$couleurCSS?>; border:1px solid #000;"></span>
                             <?php endforeach;?>
                         </div>
                         <?php if(isset($nbCouleur)):?>
@@ -152,5 +170,22 @@
     </section>
             
 </body>
+<script>
+
+
+setInterval(function(){
+
+    $.get("../messageInstantane/commandenb.php", function(data){
+        $(".nbcommande").text(data);
+    });
+
+    $.get("../messageInstantane/nbvente.php", function(data){
+        $(".nbvente").text(data);
+    });
+
+}, 5000);
+    
+
+</script>
 <script src="../js.js"></script>
 </html>

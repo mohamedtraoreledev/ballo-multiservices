@@ -17,9 +17,9 @@
             $msg_succes = "Vous retrouverez toutes vos livraisons à effectuer ici !!!";
         }
 
-                $selectNbCommande = $bd->prepare("SELECT COUNT(*) as nbcommande from commande where vp=?");
-                $selectNbCommande->execute(array(0));
-                $nb_commande = $selectNbCommande->fetch();
+                $selectvpCommande = $bd->prepare("SELECT COUNT(*) as nbcommande from commande where vp=?");
+        $selectvpCommande->execute(array(0));
+        $nb_vp = $selectvpCommande->fetch();
 
 
                 $selectNbVente = $bd->prepare("SELECT COUNT(*) as nbvente from commande where etat3=?");
@@ -61,47 +61,45 @@
                 <h1>Livraison à faire</h1>
                 <p style="color:white"><?php if(isset($msg_succes)){echo $msg_succes;}?></p>
                 <div id="traitcomment"></div>
-                <?php while($recupLiv = $recupLivraison->fetch()){
-                    
-                             ?>
-                    
-                        <table>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Email</th>
-                        <th>Téléphone</th>
-                        <th>Date de la commmande</th>
-                        <th>Prix total de la commande</th>
-                        <th id="statucommandeadmin">Statu de la commande</th>
-                        <th>Ville de livraison</th>
-                        <th style="color:white">Adresse de livraison</th>
-                    </tr>
-                    <tr>
-                        <td><?=$recupLiv["nom"]?></td>
-                        <td><?=$recupLiv["prenom"]?></td>
-                        <td><?=$recupLiv["email"]?></td>
-                        <td><?=$recupLiv["telephone"]?></td>
-                        <td><?=$recupLiv["date_commande"]?></td>
-                        <td><?=$recupLiv["prix_total"]?> FCFA</td>
-                        <td><?=$recupLiv["statu_commande"]?></td>
-                        <td><?=$recupLiv["ville"]?></td>
-                        <td style="color:orange"><?=$recupLiv["adresse"]?></td>
-                    </tr>
-                    <tr>
-                        <td><?php if($recupLiv["statu_commande"]=="<p style='color:green'>Livrer<p/>"):?>
-                        <a href="../action/reçuadmin.php?idCommande=<?=$recupLiv["idCommande"]?>" style="color:white">Obtenir un reçu</a>
-                        <?php endif;?>
-                        </td>
-                        <th>Maps</th>
-                        <td><iframe src="https://maps.google.com/maps?&q=<?=$recupLiv["adresse"]?>&output=embed" width="500%" height="600px" frameborder="0"></iframe></td>
-                    </tr>
+                <div class="mobile-livraison">
 
+                <?php while($recupLiv = $recupLivraison->fetch()){ ?>
 
-                </table>
-                    <?php
-                    }
-                ?>
+                <div class="livraison-card">
+
+                    <p><strong>Nom :</strong> <?=$recupLiv["nom"]?></p>
+
+                    <p><strong>Prénom :</strong> <?=$recupLiv["prenom"]?></p>
+
+                    <p><strong>Email :</strong> <?=$recupLiv["email"]?></p>
+
+                    <p><strong>Téléphone :</strong> <?=$recupLiv["telephone"]?></p>
+
+                    <p><strong>Date :</strong> <?=$recupLiv["date_commande"]?></p>
+
+                    <p><strong>Montant :</strong> <?=$recupLiv["prix_total"]?> FCFA</p>
+
+                    <p><strong>Ville :</strong> <?=$recupLiv["ville"]?></p>
+
+                    <p><strong>Adresse :</strong> <?=$recupLiv["adresse"]?></p>
+
+                    <p><strong>Statut :</strong> <?=$recupLiv["statu_commande"]?></p>
+
+                    <iframe
+                        src="https://maps.google.com/maps?&q=<?=$recupLiv["adresse"]?>&output=embed">
+                    </iframe>
+
+                    <?php if($recupLiv["statu_commande"]=="<p style='color:green'>Livrer<p/>"){ ?>
+                        <a href="../action/reçuadmin.php?idCommande=<?=$recupLiv["idCommande"]?>">
+                            Obtenir le reçu
+                        </a>
+                    <?php } ?>
+
+                </div>
+
+                <?php } ?>
+
+                </div>
                     
                     
                 
@@ -109,5 +107,22 @@
 
         </div>
 </body>
+<script>
+
+
+setInterval(function(){
+
+    $.get("../messageInstantane/commandenb.php", function(data){
+        $(".nbcommande").text(data);
+    });
+
+    $.get("../messageInstantane/nbvente.php", function(data){
+        $(".nbvente").text(data);
+    });
+
+}, 5000);
+    
+
+</script>
 <script src="../js.js"></script>
 </html>
