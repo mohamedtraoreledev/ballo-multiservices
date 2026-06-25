@@ -32,6 +32,7 @@
                     $_SESSION["prenom"] = $infosUsers["prenom"];
                     $_SESSION["email"] = $infosUsers["email"];
                     $_SESSION["telephone"] = $infosUsers["telephone"];
+                    header("location:users/index.php");
                      if(isset($_SESSION["redirect_after_connect"])){
                         $redirectUrl = $_SESSION["redirect_after_connect"];
                         unset($_SESSION["redirect_after_connect"]);
@@ -39,7 +40,7 @@
                     }else{
                         header("location:users/index.php");
                     }
-                    // $msg_succes = "inscription reussi !!";
+                    $msg_succes = "inscription reussi !!";
                 }
             }
 

@@ -27,7 +27,7 @@
                     $contenu = nl2br($_POST["commentaire"]);
                     $insertCommentaire = $bd->prepare("INSERT INTO commentaire(id_client,id_model,contenu) values(?,?,?)");
                     $insertCommentaire->execute(array($_SESSION["id"],$idmodel,$contenu));
-                    echo"comm ok";
+                    // echo"comm ok";
 
                 }
                 }
@@ -79,7 +79,7 @@
                 <button><span class="material-symbols-outlined">search</span></button>
                 <input type="search" name="search" id="search" placeholder="recherche...">
             </form> -->
-        <a href="panier.php"><span class="material-symbols-outlined">shopping_cart</span>
+        <a href="panier.php"><span class="material-symbols-outlined">pan_tool_alt</span><span class="material-symbols-outlined">shopping_cart</span>
             <nav>
                 <?php
                 $total = 0;
