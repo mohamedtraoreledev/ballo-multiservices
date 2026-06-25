@@ -1,6 +1,4 @@
-  
-  
-  <?php
+<?php
         include "../includes/conn.php";
 
         $selectNbClient = $bd->query("SELECT COUNT(*) as nbclient from client");
